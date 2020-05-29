@@ -27,7 +27,7 @@ export default class ChatComment extends LightningElement {
 
   get messageTime() {
     const dt = new Date(this.comment.CreatedDate);
-    const min = dt.getMinutes() > 10 ? dt.getMinutes() : "0" + dt.getMinutes();
+    const min = dt.getMinutes() >= 10 ? dt.getMinutes() : "0" + dt.getMinutes();
     return `${dt.getHours()}:${min}`;
   }
 

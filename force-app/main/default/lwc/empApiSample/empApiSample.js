@@ -1,5 +1,5 @@
 import { LightningElement, wire, track } from "lwc";
-import { subscribe, unsubscribe } from "lightning/empApi";
+import { subscribe, unsubscribe, isEmpEnabled } from "lightning/empApi";
 import getUserData from "@salesforce/apex/LwcPlatformEventChatController.getUserData";
 import publish from "@salesforce/apex/LwcPlatformEventChatController.publish";
 
@@ -34,6 +34,13 @@ export default class EmpApiSample extends LightningElement {
       this.error = error;
     }
   }
+
+  connectedCallback = async () => {
+    const isEmpAvailable = await isEmpEnabled();
+    if (!isEmpAvailable) {
+      this.error = "unavailable";
+    }
+  };
 
   get isUrlProfile() {
     return this.profileType === "url";
@@ -80,7 +87,7 @@ export default class EmpApiSample extends LightningElement {
   };
 
   // Callback invoked whenever a new event message is received
-  onReceiveMessage = async message => {
+  onReceiveMessage = async (message) => {
     await this.contents.push({
       ...message.data.payload,
       id: message.data.event.replayId
@@ -105,7 +112,7 @@ export default class EmpApiSample extends LightningElement {
     this.comment = e.target.value;
   }
 
-  handleCommentPublish = async e => {
+  handleCommentPublish = async (e) => {
     e.preventDefault(false);
     this.comment = this.comment.trim();
     if (!this.comment) {
@@ -119,7 +126,7 @@ export default class EmpApiSample extends LightningElement {
     return false;
   };
 
-  handleError = e => {
+  handleError = (e) => {
     this.error = e;
   };
 
