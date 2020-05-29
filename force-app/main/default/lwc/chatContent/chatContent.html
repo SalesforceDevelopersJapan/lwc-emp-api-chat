@@ -1,0 +1,7 @@
+<template>
+  <ul class="chat-wrapper">
+    <template for:each={contents} for:item="comment">
+      <c-chat-comment key={comment.id} comment={comment} user-id={userId}></c-chat-comment>
+    </template>
+  </ul>
+</template>

@@ -1,0 +1,30 @@
+<template>
+  <li class="comment">
+    <template if:true={isComment}>
+      <div class={commentClassName}>
+        <div class="profile-icon-wrapper">
+          <template if:true={isProfileImage}>
+            <img class="image-icon" src={comment.ProfileImageValue__c} />
+          </template>
+          <template if:false={isProfileImage}>
+            <div class={colorProfileClass}>
+              <span></span>
+            </div>
+          </template>
+        </div>
+        <div class="message-content">
+          <p class="message-user-name">{comment.ChatUserName__c}</p>
+          <div class="message-wrapper">
+            <p class="message-body">
+              {comment.Message__c}
+            </p>
+          </div>
+        </div>
+        <div class="message-time">{messageTime}</div>
+      </div>
+    </template>
+    <template if:false={isComment}>
+      <p class="system-message">{messageTime} - {systemMessage}</p>
+    </template>
+  </li>
+</template>

@@ -1,0 +1,61 @@
+.separator {
+  border-top: 1px solid rgb(221, 219, 218);
+  padding-top: 0.75rem;
+}
+
+.profile-selector {
+  cursor: pointer;
+}
+
+.profile-icon {
+  max-height: 100%;
+  max-width: 100%;
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.profile-selector-wrapper {
+  position: relative;
+}
+.profile-selector-options {
+  position: absolute;
+  left: -0.5rem;
+  right: -0.5rem;
+  top: 2.5rem;
+  z-index: 100;
+  width: 3rem;
+  z-index: 100;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  padding: .15rem 0.25rem;
+  border: 1px solid #cacaca;
+}
+.profile-selector-options > ul {
+  text-align: center;
+}
+
+.profile-selector-options > ul > li {
+  margin: .4rem auto;
+}
+
+.color-icon span {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  vertical-align: top;
+}
+.color-icon.blue span {
+  background-color: #166ff5;
+}
+.color-icon.green span {
+  background-color: #36f880;
+}
+.color-icon.red span {
+  background-color: #ff5151;
+}
+.color-icon.purple span {
+  background-color: #c323eb;
+}

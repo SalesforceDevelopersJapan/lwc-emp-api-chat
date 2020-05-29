@@ -1,0 +1,126 @@
+<template>
+  <lightning-card title="Chat" icon-name="standard:messaging_conversation">
+    <template if:true={isChatting}>
+      <lightning-button
+        label="Leave"
+        title="Leave"
+        onclick={handleLeave}
+        class="slds-m-left_x-small"
+        slot="actions"
+      ></lightning-button>
+    </template>
+    <div class="slds-p-horizontal_medium slds-p-bottom_x-small">
+      <template if:false={isChatting}>
+        <form name="prechat" onsubmit={doNothing}>
+          <lightning-layout horizontal-align="spread" vertical-align="end">
+            <lightning-layout-item>
+              <div class="profile-selector-wrapper">
+                <div
+                  onclick={handleProfileSelect}
+                  class="profile-selector slds-m-right_x-small"
+                >
+                  <template if:true={isUrlProfile}>
+                    <img src={profileValue} class="profile-icon" />
+                  </template>
+                  <template if:false={isUrlProfile}>
+                    <div class={colorProfileClass}>
+                      <span></span>
+                    </div>
+                  </template>
+                </div>
+                <template if:true={shouldShowProfileOptions}>
+                  <div class="profile-selector-options">
+                    <ul>
+                      <li
+                        onclick={handleProfileIconChange}
+                        data-icon-option="url"
+                      >
+                        <img src={profileImageUrl} class="profile-icon" />
+                      </li>
+                      <li
+                        onclick={handleProfileIconChange}
+                        data-icon-option="blue"
+                        class="color-icon blue"
+                      >
+                        <span></span>
+                      </li>
+                      <li
+                        onclick={handleProfileIconChange}
+                        data-icon-option="green"
+                        class="color-icon green"
+                      >
+                        <span></span>
+                      </li>
+                      <li
+                        onclick={handleProfileIconChange}
+                        data-icon-option="red"
+                        class="color-icon red"
+                      >
+                        <span></span>
+                      </li>
+                      <li
+                        onclick={handleProfileIconChange}
+                        data-icon-option="purple"
+                        class="color-icon purple"
+                      >
+                        <span></span>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
+              </div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="grow">
+              <lightning-input
+                label="Your name"
+                value={userName}
+                variant="label-hidden"
+                onchange={handleUserName}
+                placeholder="Your name..."
+                autocomplete="off"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item>
+              <lightning-button
+                label="Join"
+                title="Join"
+                onclick={handleJoin}
+                variant="brand"
+                class="slds-m-left_x-small"
+                type="submit"
+              ></lightning-button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </form>
+      </template>
+
+      <template if:true={isChatting}>
+        <c-chat-content contents={contents} user-id={userId}></c-chat-content>
+        <form name="chatting" onsubmit={handleCommentPublish}>
+          <lightning-layout horizontal-align="spread" class="separator">
+            <lightning-layout-item flexibility="grow">
+              <lightning-input
+                label="comment"
+                value={comment}
+                variant="label-hidden"
+                onchange={handleCommentChange}
+                placeholder="message..."
+                class="comment-input"
+                autocomplete="off"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item>
+              <lightning-button
+                label="Send"
+                title="Send"
+                variant="brand"
+                onclick={handleCommentPublish}
+                class="slds-m-left_x-small"
+              ></lightning-button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </form>
+      </template>
+    </div>
+  </lightning-card>
+</template>
