@@ -1,4 +1,4 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { subscribe, unsubscribe, isEmpEnabled } from "lightning/empApi";
 import getUserData from "@salesforce/apex/LwcPlatformEventChatController.getUserData";
 import publish from "@salesforce/apex/LwcPlatformEventChatController.publish";
@@ -14,6 +14,9 @@ export default class EmpApiSample extends LightningElement {
   profileValue = "";
   profileImageUrl;
   error = null;
+
+  @api
+  componentMaxHeight;
 
   @track
   comment;

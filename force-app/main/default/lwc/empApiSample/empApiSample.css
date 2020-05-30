@@ -29,7 +29,7 @@
   z-index: 100;
   background-color: #fff;
   border-radius: 0.25rem;
-  padding: .15rem 0.25rem;
+  padding: 0.15rem 0.25rem;
   border: 1px solid #cacaca;
 }
 .profile-selector-options > ul {
@@ -37,7 +37,7 @@
 }
 
 .profile-selector-options > ul > li {
-  margin: .4rem auto;
+  margin: 0.4rem auto;
 }
 
 .color-icon span {
@@ -58,4 +58,26 @@
 }
 .color-icon.purple span {
   background-color: #c323eb;
+}
+
+.slds-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slds-card__body {
+  flex: 1;
+  margin: 0;
+  padding-bottom: 0.25rem;
+}
+
+.slds-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+c-chat-content {
+  flex: 1;
 }

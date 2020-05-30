@@ -1,5 +1,4 @@
 .chat-wrapper {
-  max-height: 280px;
   overflow-y: scroll;
   min-height: 80px;
 }
