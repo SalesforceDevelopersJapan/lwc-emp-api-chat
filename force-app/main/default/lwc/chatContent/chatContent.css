@@ -1,3 +1,6 @@
+:host {
+  overflow-y: auto;
+}
 .chat-wrapper {
   overflow-y: scroll;
   min-height: 80px;
